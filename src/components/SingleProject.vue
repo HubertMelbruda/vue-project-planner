@@ -9,7 +9,7 @@
         <span @click="handleDeleteProject" class="material-icons">
           delete
         </span>
-        <span @click="toggleComplete" class="material-icons done" > done </span>
+        <span @click="toggleComplete" class="material-icons project__icons--done"> done </span>
       </div>
     </div>
     <div v-if="showDetails" class="project__details">
@@ -41,14 +41,14 @@ export default {
     },
     toggleComplete() {
       axios
-        .patch(this.uri, { complete: !this.project.complete }) 
+        .patch(this.uri, { complete: !this.project.complete })
         .then(() => this.$emit("complete", this.project.id))
-        .catch(err => console.log(err)) 
+        .catch(err => console.log(err))
     },
   },
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .project {
   margin: 20px auto;
   background: white;
@@ -56,6 +56,14 @@ export default {
   border-radius: 4px;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.05);
   border-left: 4px solid #e90074;
+}
+
+.complete {
+  border-left: 4px solid #00ce89;
+
+  .project__icons--done {
+    color: #00ce89;
+  }
 }
 
 .project__details {
@@ -78,14 +86,4 @@ export default {
 .material-icons:hover {
   color: #777;
 }
-
-.complete {
-  border-left: 4px solid #00ce89;
-
-  
-}
-.complete .done {
-  color: #00ce89;
-}
-
 </style>
