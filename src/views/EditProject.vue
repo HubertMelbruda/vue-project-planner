@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="form">
+  <form @submit.prevent="handelSumbit" class="form">
     <label class="form__label">Title</label>
     <input type="text" required v-model="title" class="form__input" />
     <label class="form__label">Details:</label>
@@ -10,38 +10,46 @@
       v-model="details"
       class="form__textarea"
     ></textarea>
-    <button class="form_button">Add Project</button>
+    <button class="form_button">Update Project</button>
   </form>
 </template>
 
 <script>
-const axios = require("axios")
+const axios = require('axios')
+
 export default {
+  props: ['id'],
   data() {
     return {
-      title: "",
-      details: "",
-      uri: "http://localhost:8000/projects",
+      title: '',
+      details: '',
+      uri: 'http://localhost:8000/projects/' + this.id
     }
+  }, 
+  mounted() {
+    axios
+      .get(this.uri)
+      .then(res => {
+        this.title = res.data.title
+        this.details = res.data.details
+      })
+      .catch(err => console.log(err))
   },
   methods: {
-    handleSubmit() {
+    handelSumbit() {
       let project = {
         title: this.title,
         details: this.details,
-        complete: false,
       }
-
-      axios.post(this.uri, project)
-      .then(() => {
-        this.$router.push({ name: 'Home'})
-      })
-      .catch(err => console.log(err))
-
-    },
-  },
+      axios
+        .patch(this.uri, project)
+        .then(() => this.$router.push({ name: 'Home'}))
+        .catch(err => console.log(err))
+    }
+  }
 }
 </script>
+
 <style lang="scss">
 .form {
   background: white;
