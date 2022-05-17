@@ -51,20 +51,23 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../assets/global.scss';
+
 .project {
   margin: 20px auto;
-  background: white;
+  background: $accent-color;
   padding: 10px 20px;
   border-radius: 4px;
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.05);
-  border-left: 4px solid #e90074;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.411);
+  border-left: 4px solid $notDone;
+  letter-spacing: 0.5px;
 }
 
 .complete {
-  border-left: 4px solid #00ce89;
+  border-left: 4px solid $done;
 
   .project__icons--done {
-    color: #00ce89;
+    color: $done;
   }
 }
 
@@ -81,11 +84,11 @@ export default {
 .material-icons {
   font-size: 24px;
   margin-left: 10px;
-  color: #bbb;
+  color: $icons-color;
   cursor: pointer;
 }
 
 .material-icons:hover {
-  color: #777;
+  color: $icons-color--action;
 }
 </style>

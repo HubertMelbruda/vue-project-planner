@@ -1,34 +1,22 @@
 {
   "projects": [
     {
-      "id": 1,
-      "title": "Make marketing email",
-      "details": "Lorem ipsum",
-      "complete": true
-    },
-    {
-      "id": 2,
-      "title": "Make marketing email",
-      "details": "Lorem ipsum",
-      "complete": false
-    },
-    {
       "id": 3,
       "title": "Make marketing email",
       "details": "Lorem ipsum",
       "complete": false
     },
     {
-      "title": "aasda",
-      "details": "aasdasdasdasd",
-      "complete": true,
-      "id": 4
-    },
-    {
       "title": "New Project ",
       "details": "Ne ne ne asdsasd",
       "complete": true,
       "id": 5
+    },
+    {
+      "title": "asdasd",
+      "details": "asdasd",
+      "complete": false,
+      "id": 6
     }
   ]
 }

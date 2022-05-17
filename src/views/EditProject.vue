@@ -15,17 +15,17 @@
 </template>
 
 <script>
-const axios = require('axios')
+const axios = require("axios")
 
 export default {
-  props: ['id'],
+  props: ["id"],
   data() {
     return {
-      title: '',
-      details: '',
-      uri: 'http://localhost:8000/projects/' + this.id
+      title: "",
+      details: "",
+      uri: "http://localhost:8000/projects/" + this.id,
     }
-  }, 
+  },
   mounted() {
     axios
       .get(this.uri)
@@ -43,22 +43,24 @@ export default {
       }
       axios
         .patch(this.uri, project)
-        .then(() => this.$router.push({ name: 'Home'}))
+        .then(() => this.$router.push({ name: "Home" }))
         .catch(err => console.log(err))
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
+@import "../assets/global.scss";
+
 .form {
-  background: white;
+  background: $accent-color;
   padding: 20px;
   border-radius: 10px;
 }
 .form__label {
   display: block;
-  color: #bbb;
+  color: $font-color;
   text-transform: uppercase;
   font-size: 16px;
   font-weight: bold;
@@ -68,12 +70,12 @@ export default {
 .form__input {
   padding: 10px;
   border: 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid $details-color;
   width: 100%;
   box-sizing: border-box;
 }
 .form__textarea {
-  border: 1px solid #ddd;
+  border: 1px solid $details-color;
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
@@ -82,8 +84,8 @@ export default {
 .form_button {
   display: block;
   margin: 20px auto 0;
-  background: #00ce89;
-  color: white;
+  background: $done;
+  color: $accent-color;
   padding: 10px;
   border: 0;
   border-radius: 6px;
